@@ -1,0 +1,91 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calendar Home Page</title>
+
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<!-- Habit Tracker section -->
+			<li><a href="#habit-tracker">Habit Tracker</a></li>
+
+			<!-- Calendar section -->
+			<li><a href="#calendar">Calendar</a></li>
+
+			<!-- To-Do section -->
+			<li><a href="#to-do">To-Do</a></li>
+
+			<!-- Time Split section -->
+			<li><a href="#time-split">Time Split</a></li>
+		</ul>
+	</nav>
+	
+	<!-- Calendar section -->
+	<div id="container">
+		<div id="header">
+			<div id="monthDisplay"></div>
+			<div>
+				<button id = "backButton">Back</button>
+				<button id = "nextButton">Next</button>
+			</div>
+		</div>
+
+		<div id="weekdays">
+			<div>Sunday</div>
+			<div>Monday</div>
+			<div>Tuesday</div>
+			<div>Wednesday</div>
+			<div>Thursday</div>
+			<div>Friday</div>
+			<div>Saturday</div>
+		</div>
+
+		<div id="calendar"></div>
+
+    <div id="scroll-container"> 
+      <div id="scroll-text">Scrolling Text</div>
+    </div>
+
+	</div>
+
+	<!-- Habit Tracker section -->
+	<div id="habit-tracker"></div>
+
+	<!-- To-Do section -->
+	<div id="to-do"></div>
+
+	<!-- Time Split section -->
+	<div id="time-split"></div>
+
+	<!-- New Event Modal -->
+	<div id="newEventModal">
+		<h2>New Event</h2>
+
+		<input id = "eventTitleInput" placeholder = "Event Title" />
+
+		<button id = "saveButton">Save</button>
+		<button id = "cancelButton">Cancel</button>
+    
+	</div>
+
+	<!-- Delete Event Modal -->
+	<div id="deleteEventModal">
+		<h2>Event</h2>
+
+		<p id="eventText"></p>
+
+		<button id = "deleteButton">Delete</button>
+		<button id = "closeButton">Close</button>
+	</div>
+  
+	<div id="modalBackDrop"></div>
+
+	<script src="./script.js"></script>
+</body>
+
+</html>
