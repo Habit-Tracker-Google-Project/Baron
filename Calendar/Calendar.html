@@ -3,25 +3,26 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Calendar Home Page</title>
+	<title>Calendar Page</title>
 
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="calendar.css">
+	<link rel="stylesheet" href="../setup.css">
 </head>
 
 <body>
 	<nav>
 		<ul>
 			<!-- Habit Tracker section -->
-			<li><a href="#habit-tracker">Habit Tracker</a></li>
+			<li><a href="../Home/Home.html">Habit Tracker</a></li>
 
 			<!-- Calendar section -->
-			<li><a href="#calendar">Calendar</a></li>
+			<li><a href="./Calendar.html">Calendar</a></li>
 
 			<!-- To-Do section -->
-			<li><a href="#to-do">To-Do</a></li>
+			<li><a href="../To-Do/todo.html">To-Do</a></li>
 
 			<!-- Time Split section -->
-			<li><a href="#time-split">Time Split</a></li>
+			<li><a href="./timeSplits.html">Time Split</a></li>
 		</ul>
 	</nav>
 	
@@ -53,15 +54,6 @@
 
 	</div>
 
-	<!-- Habit Tracker section -->
-	<div id="habit-tracker"></div>
-
-	<!-- To-Do section -->
-	<div id="to-do"></div>
-
-	<!-- Time Split section -->
-	<div id="time-split"></div>
-
 	<!-- New Event Modal -->
 	<div id="newEventModal">
 		<h2>New Event</h2>
@@ -86,6 +78,7 @@
 	<div id="modalBackDrop"></div>
 
 	<script src="./script.js"></script>
+	<script src="../ScrollingTips.js"></script>
 </body>
 
 </html>
