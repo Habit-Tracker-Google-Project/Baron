@@ -5,8 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Habit Tracker</title>
     <style>
-      .chartBox {
-        width: 700px;
+      .chartBoxBar {
+        position: absolute;
+        left: 20%;
+        width: 27%;
+        bottom: 7%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+      }
+
+      .chartBoxPolar {
+        position: absolute;
+        right: 20%;
+        bottom: 7%;
+        width: 25%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+      }
+
+      .chartBoxLine {
+        position: absolute;
+        right: 20%;
+        top: 5.3%;
+        width: 25%;
         padding: 20px;
         border-radius: 20px;
         border: solid 3px rgba(54, 162, 235, 1);
@@ -22,44 +47,36 @@
   <body>
 
 
-    <div class="chartBox">
+    <div class="chartBoxBar">
       <canvas id="barChart"></canvas>
     </div>
 
-    <div class="chartBox">
-      <canvas id="pieChart"></canvas>
+    <div class="chartBoxPolar">
+      <canvas id="polarChart"></canvas>
+    </div>
+
+    <div class="chartBoxLine">
+      <canvas id="lineChart"></canvas>
     </div>
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
     <script>
     
-    // https://www.youtube.com/watch?v=kOZH_xiczb8 used this tutorial
+    // https://www.chartjs3.com/docs/chart/chart-types/ 
 
     // 1st chart -------------------------------------------------------------------------
 
-    // setup 
+    // attributes and data of the bar chart 
     let data = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       datasets: [{
-        label: 'Weekly Sales',
+        label: 'Time Spent',
         data: [18, 12, 6, 9, 12, 3, 9],
         backgroundColor: [
-          'rgba(255, 26, 104, 0.2)',
           'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(0, 0, 0, 0.2)'
         ],
         borderColor: [
-          'rgba(255, 26, 104, 1)',
           'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(0, 0, 0, 1)'
         ],
         borderWidth: 1
       }]
@@ -70,7 +87,7 @@
       type: 'bar',
       data,
       options: {
-        scales: {
+        scales: { // puts measurements on the side aka the scale of the x and y axis
           y: {
             beginAtZero: true
           }
@@ -86,29 +103,23 @@
 
     // 2nd chart -------------------------------------------------------------------------
 
-    // setup 
+    // attributes and data of the pie chart
     data = {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      labels: ['Leisure','Work','Break','Eating'],
       datasets: [{
         label: 'Monthly Sales',
-        data: [18, 12, 6, 9, 12, 3, 9],
+        data: [0.2, 0.6, 0.1, 0.1],
         backgroundColor: [
           'rgba(255, 26, 104, 0.2)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(255, 206, 86, 0.2)',
           'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(0, 0, 0, 0.2)'
         ],
         borderColor: [
           'rgba(255, 26, 104, 1)',
           'rgba(54, 162, 235, 1)',
           'rgba(255, 206, 86, 1)',
           'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(0, 0, 0, 1)'
         ],
         borderWidth: 1
       }]
@@ -116,21 +127,54 @@
 
     // config 
     const config2 = {
-      type: 'doughnut',
+      type: 'polarArea',
       data,
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
+      options: {  
       }
     };
 
     // render init block
-    const pieChart = new Chart(
-      document.getElementById('pieChart'),
+    const polarChart = new Chart(
+      document.getElementById('polarChart'),
       config2
+    );
+
+    // 3nd chart -------------------------------------------------------------------------
+
+    // attributes and data of the pie chart
+    data = {
+      labels: ['Leisure','Work','Break','Eating'],
+      datasets: [{
+        label: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+        data: [0.2, 0.6, 0.1, 0.1],
+        backgroundColor: [
+          'rgba(255, 26, 104, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 26, 104, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1
+      }]
+    };
+
+    // config 
+    const config3 = {
+      type: 'line',
+      data,
+      options: {  
+      }
+    };
+
+    // render init block
+    const lineChart = new Chart(
+      document.getElementById('lineChart'),
+      config3
     );
 
     </script>

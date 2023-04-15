@@ -22,7 +22,7 @@
 
   #scroll-container {
     background-color:lightskyblue;
-    position: absolute;
+    position: fixed;
     bottom: 5px;
     height: 20px;
     width: 100%;
