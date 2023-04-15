@@ -6,7 +6,7 @@
     display: flex;
     margin-top: 50px;
     justify-content: center;
-    background-color: #FFFCFF;
+    background-color: #ffe6a1;
   }
 
   button {
@@ -21,13 +21,12 @@
   }
 
   #scroll-container {
-    
+    background-color:lightskyblue;
     position: absolute;
     bottom: 5px;
     height: 20px;
     width: 100%;
     padding: 5px;
-    box-shadow: 0px 0px 2px gray;
     overflow: hidden;
     transition-delay: 300s;
   }
