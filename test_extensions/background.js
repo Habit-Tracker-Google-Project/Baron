@@ -14,9 +14,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   // you can ignore TabID here
   // console.log(changeInfo);
   // console.log(tab);
-  if (changeInfo.status===`complete`&&changeInfo.url!=tab.url) {
+  if (changeInfo.status===`complete`) {
     console.log(tab);
-    console.log(`Switching to: ${tab.url}`);
+    console.log(`Switching to: ${changeInfo.url}`);
     const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
     console.log(`Elapsed time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
     startTime = Date.now();
