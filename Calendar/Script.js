@@ -79,6 +79,7 @@ function load() {
       daySquare.addEventListener('click', () => openModal(dayString)); //checks if a daySquare is clicked and makes the modal visible
     } else {
       daySquare.classList.add('padding'); // assigns the padding days to a different class so the css recognizes it
+      daySquare.style.visibility = 'hidden';
     }
 
     calendar.appendChild(daySquare); // adds the entire div to the calendar variable from the beginning that is set to the html doc

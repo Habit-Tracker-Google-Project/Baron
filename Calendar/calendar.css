@@ -40,6 +40,14 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+.day .padding {
+  background-color: #ffe6a1;
+  border-radius: 20px;
+  border-color: black;
+  border-style: fixed;
+}
+
 .day:hover {
   background-color: #e8faed;
 }
