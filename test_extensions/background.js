@@ -4,19 +4,22 @@ let startTime = Date.now();
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
   const tab = await chrome.tabs.get(activeInfo.tabId);
-  console.log(`Switching to: ${tab.url}`);
-  console.log(tab);
-  // Calculate elapsed time in seconds
-  const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
-  console.log(`Elapsed time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
+  if (tab.url !== ""){
+    console.log(`Switching to: ${tab.url}`);
+    console.log(tab);
+    // Calculate elapsed time in seconds
+    const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
+    console.log(`Elapsed time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
 
-  // Update start time
-  startTime = Date.now();
+    // Update start time
+    startTime = Date.now();
 
-  // Storage ----------
+    // Storage ----------
 
-  const url = new URL (await tab.url); // get the hostname of the url instead of the whole url
-  storeCountInSession(url.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    const url = new URL (tab.url); // get the hostname of the url instead of the whole url
+    console.log(url.hostname);
+    storeCountInSession(url.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+  }
 
 });
 
@@ -26,7 +29,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   // console.log(changeInfo);
   // console.log(tab);
 
-  if (changeInfo.status===`complete` && tab.url !== null) {
+  if (changeInfo.status===`complete` && tab.url !== null && tab.url !== "") {
     console.log(tab);
     console.log(`Switching to: ${tab.url}`);
     const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
@@ -38,6 +41,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // Storage ----------
 
     const url = new URL (tab.url); // get the hostname of the url instead of the whole url
+    console.log(url.hostname);
     storeCountInSession(url.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
 
   }   
