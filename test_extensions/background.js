@@ -1,5 +1,6 @@
 
 let startTime = Date.now();
+let currentWebsite = new URL ("http://www.default.com");
 
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
@@ -16,9 +17,8 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
     // Storage ----------
 
-    const url = new URL (tab.url); // get the hostname of the url instead of the whole url
-    console.log(url.hostname);
-    storeCountInSession(url.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    currentWebsite = new URL (tab.url);
   }
 
 });
@@ -29,7 +29,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   // console.log(changeInfo);
   // console.log(tab);
 
-  if (changeInfo.status===`complete` && tab.url !== null && tab.url !== "") {
+  if (changeInfo.status===`complete` && tab.url !== null && tab.url !== "" && tab.active) {
     console.log(tab);
     console.log(`Switching to: ${tab.url}`);
     const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
@@ -40,10 +40,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     // Storage ----------
 
-    const url = new URL (tab.url); // get the hostname of the url instead of the whole url
-    console.log(url.hostname);
-    storeCountInSession(url.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
-
+    storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    currentWebsite = new URL (tab.url);
   }   
 });
 
