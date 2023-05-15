@@ -79,9 +79,9 @@ function storeInDisk(taburl) {
   chrome.storage.local.get([taburl]).then((result) => {
       // If the entry doesn't exist in our lookup, create one and set it's count to 1
       if (result[taburl] === undefined) {
-          chrome.storage.local.set({ [taburl]: 1});
+          chrome.storage.local.set({ [taburl]: time});
       } else {
-          let newCount = result[taburl] + 1;
+          let newCount = result[taburl] + time;
           chrome.storage.local.set({ [taburl]: newCount});
       }
   });
@@ -95,8 +95,4 @@ function resetStorage() {
       console.log(result);
   });
 }
-
-// ---------------------------------------------------------------------
-// Storage Code
-
 

@@ -1,2 +1,0 @@
-const rows = 10;
-
