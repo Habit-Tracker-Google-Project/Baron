@@ -1,11 +1,9 @@
 console.log("This is a popup!")
 
 chrome.storage.session.get(null, function(items) {
-   const keys = Object.keys(items);
-   console.log(keys);
    const div = document.getElementById("splits");
    const table = document.createElement("table");
-   for (const key in keys) {
+   for (const key in items) {
       console.log(key);
       console.log(items[key]);
       var row = document.createElement("tr");
