@@ -3,16 +3,7 @@
 let urls = [];
 let times = [];
 
-Object.entries(localStorage).forEach(([key, item]) => {
-  if (key != "list"){ // get every key : value pair except for the to-do list
-    urls.push(key);
-    times.push(item);
-  }
-})
 
-
-console.log(urls);
-console.log(times);
 
 // 1st chart -------------------------------------------------------------------------
 
