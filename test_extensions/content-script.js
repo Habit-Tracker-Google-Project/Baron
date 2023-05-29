@@ -3,7 +3,27 @@
 let urls = [];
 let times = [];
 
+function pullUrlsFromDisk() {
+  chrome.storage.local.get("urls").then((result) => { // taburl is the key
+      // If the entry doesn't exist in our lookup, create one and set it's count to 1
+      urls = result;
+  });
+}
 
+function pullTimesFromDisk(taburl) {
+  chrome.storage.local.get([taburl]).then((result) => { // taburl is the key
+      // If the entry doesn't exist in our lookup, create one and set it's count to 1
+      if (result[taburl] !== undefined) {
+          times.push(result[taburl]);
+          console.log(result + ":" + result[taburl]);
+      }
+  });
+}
+
+pullUrlsFromDisk();
+for (let i = 0; i < urls.length; i++){
+  pullTimesFromDisk(urls[i]);
+}
 
 // 1st chart -------------------------------------------------------------------------
 

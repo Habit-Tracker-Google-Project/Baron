@@ -1,6 +1,7 @@
 let startTime = Date.now();
 let currentWebsite = new URL ("http://www.default.com");
 
+
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
   const tab = await chrome.tabs.get(activeInfo.tabId);
@@ -8,7 +9,7 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
     console.log(`Switching to: ${tab.url}`);
     console.log(tab);
     // Calculate elapsed time in seconds
-    const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
+    const elapsedTimeSeconds = ((Date.now() - startTime) / 1000);
     console.log(`Elapsed time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
 
     // Update start time
@@ -17,7 +18,9 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
     // Storage ----------
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
+
   }
 
 });
@@ -31,7 +34,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   if (changeInfo.status===`complete` && tab.url !== null && tab.url !== "" && tab.active) {
     console.log(tab);
     console.log(`Switching to: ${tab.url}`);
-    const elapsedTimeSeconds = (Date.now() - startTime) / 1000;
+    const elapsedTimeSeconds = ((Date.now() - startTime) / 1000);
     console.log(`Elapsed time: ${elapsedTimeSeconds.toFixed(2)} seconds`);
     startTime = Date.now();
     // let youtube = document.getElementByID("youtube");
@@ -40,7 +43,16 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     // Storage ----------
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
+    console.log(currentWebsite);
+
+    if (tab.url === "https://habit-tracker-google-project.github.io/HabitTracker/HabitTracker.html"){
+      chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ["content-script.js"]
+      })
+    }
   }   
 });
 
@@ -72,7 +84,7 @@ function storeCountInSession(taburl, time) {
   });
 }
 
-function storeInDisk(taburl) {
+function storeInDisk(taburl, time) {
   chrome.storage.local.get([taburl]).then((result) => {
       // If the entry doesn't exist in our lookup, create one and set it's count to 1
       if (result[taburl] === undefined) {
