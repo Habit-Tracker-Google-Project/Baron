@@ -1,24 +1,20 @@
 {
-    "manifest_version": 3,
-    "name": "Test Extension :D",
-    "description": "Testing things out",
-    "version": "1.0",
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": "my_extension_pic.png"
-    },
-    "permissions": [
-      "tabs",
-      "storage"
-    ],
-    "background": {
-      "service_worker": "background.js",
-      "type": "module"
-    },
-    "content_scripts": [
-      {
-        "matches": [""],
-        "js": ["content-script.js"]
-      }
-    ]
+  "manifest_version": 3,
+  "name": "Test Extension :D",
+  "description": "Testing things out",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "my_extension_pic.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
   }
+  
+}

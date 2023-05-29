@@ -8,11 +8,11 @@ body {
   display: flex;
   height: 88vh;
   width: 80%;
+  padding:20px;
 }
 
 .todo {
-  border-style: ridge;
-  border-radius: 20px;
+  border-radius: 0px;
   border-width: 5px;
   flex-grow: 1;
   background-color: rgb(247, 247, 247);
@@ -32,7 +32,7 @@ input[type="text"] {
   border: none;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  width: 60%;
+  width: 78%;
 }
 
 button {

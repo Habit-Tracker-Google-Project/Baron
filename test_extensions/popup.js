@@ -1,31 +1,46 @@
-//console.log("This is a popup!")
-
 chrome.storage.session.get(null, function(items) {
-   const div = document.getElementById("splits");
-   const table = document.createElement("table");
-   var initial = document.createElement("tr");
-   var cell1 = document.createElement("td");
-   cell1.append("Websites");
-   var cell2 = document.createElement("td");
-   cell2.append("Time(s)");
-   initial.append(cell1);
-   initial.append(cell2);
-   table.append(initial);
-   
-   // Iterate over the entries of the items object
-   Object.entries(items).forEach(([key, item]) => {
-      var row = document.createElement("tr");
-
-      var urlCell = document.createElement("td");
-      urlCell.append(key);
-
-      var countCell = document.createElement("td");
-      countCell.append(item);
-
-      row.append(urlCell);
-      row.append(countCell);
-      table.append(row);
-   });
-
-   div.append(table);
+  const timeTable = document.getElementById("time-table");
+  
+  // Add table headers
+  const tableHeader = document.createElement("tr");
+  tableHeader.innerHTML = `
+    <th>Websites</th>
+    <th>Time(s)</th>
+  `;
+  timeTable.appendChild(tableHeader);
+  
+  // Iterate over the entries of the items object
+  Object.entries(items).forEach(([key, item]) => {
+    const row = document.createElement("tr");
+    
+    const urlCell = document.createElement("td");
+    urlCell.textContent = key;
+    
+    const countCell = document.createElement("td");
+    countCell.textContent = item;
+    
+    row.appendChild(urlCell);
+    row.appendChild(countCell);
+    
+    timeTable.appendChild(row);
+  });
 });
+
+document.getElementById("timetracker").addEventListener("click", function() {
+  // Hide the To-Do List
+  document.querySelector(".todo").style.display = "none";
+  
+  // Show the Time Tracker
+  document.getElementById("splits").style.display = "block";
+});
+
+document.getElementById("todolist").addEventListener("click", function() {
+  // Hide the Time Tracker
+  document.getElementById("splits").style.display = "none";
+  
+  // Show the To-Do List
+  document.querySelector(".todo").style.display = "block";
+});
+
+// Hide the Time Tracker initially
+document.getElementById("splits").style.display = "none";
