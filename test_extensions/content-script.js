@@ -1,3 +1,4 @@
+const Chart = ;
 
 let urls = [];
 let times = [];
