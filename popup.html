@@ -4,14 +4,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="todo.css">
     <link rel="stylesheet" href="calendar.css">
-    <link rel="stylesheet" href="./HabitTracker.css">
 </head>
 <body>
   <div id="buttons">
     <button id="todolist">To-Do List</button>
     <button id="timetracker">Time Tracker</button>
     <button id="calendarbtn">Calendar</button>
-    <button id="statsbtn">Statistics</button>
+    <button id="statsbtn">Stats</button>
   </div>
   
   <div class="todo">
@@ -51,24 +50,6 @@
     <div id="calendar"></div>
   </div>
 
-  <!-- New Event Modal -->
-  <div id="newEventModal">
-    <h2>New Event</h2>
-    <input id="eventTitleInput" placeholder="Event Title" />
-    <button id="saveButton">Save</button>
-    <button id="cancelButton">Cancel</button>
-  </div>
-
-  <!-- Delete Event Modal -->
-  <div id="deleteEventModal">
-    <h2>Event</h2>
-    <p id="eventText"></p>
-    <button id="deleteButton">Delete</button>
-    <button id="closeButton">Cancel</button>
-  </div>
-
-  <div id="modalBackDrop"></div>
-
   <div id="stats-section">
     <div id="StatBox">
       <p></p>
@@ -86,14 +67,13 @@
       <canvas id="lineChart"></canvas>
     </div>
   </div>
-  
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
-  <script type="text/javascript" src="HabitTracker.js"></script>
 
+  <div id="modalBackDrop"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="stats.js"></script> 
   <script src="popup.js"></script>
   <script src="todo.js"></script>
   <script src="calendar.js"></script>
-
-  <script src="ScrollingTips.js"></script>
 </body>
 </html>

@@ -33,6 +33,9 @@ document.getElementById("timetracker").addEventListener("click", function() {
   // Hide the Calendar
   document.getElementById("calendar-container").style.display = "none";
 
+  // Hide the Stats section
+  document.getElementById("stats-section").style.display = "none";
+
   // Show the Time Tracker
   document.getElementById("splits").style.display = "block";
 });
@@ -43,6 +46,9 @@ document.getElementById("todolist").addEventListener("click", function() {
 
   // Hide the Calendar
   document.getElementById("calendar-container").style.display = "none";
+
+  // Hide the Stats section
+  document.getElementById("stats-section").style.display = "none";
 
   // Show the To-Do List
   document.querySelector(".todo").style.display = "block";
@@ -55,10 +61,28 @@ document.getElementById("calendarbtn").addEventListener("click", function() {
   // Hide the Time Tracker
   document.getElementById("splits").style.display = "none";
 
+  // Hide the Stats section
+  document.getElementById("stats-section").style.display = "none";
+
   // Show the Calendar
   document.getElementById("calendar-container").style.display = "block";
 });
 
-// Hide the Time Tracker and Calendar initially
+document.getElementById("statsbtn").addEventListener("click", function() {
+  // Hide the To-Do List
+  document.querySelector(".todo").style.display = "none";
+
+  // Hide the Time Tracker
+  document.getElementById("splits").style.display = "none";
+
+  // Hide the Calendar
+  document.getElementById("calendar-container").style.display = "none";
+
+  // Show the Stats section
+  document.getElementById("stats-section").style.display = "block";
+});
+
+// Hide the Time Tracker, Calendar, and Stats section initially
 document.getElementById("splits").style.display = "none";
 document.getElementById("calendar-container").style.display = "none";
+document.getElementById("stats-section").style.display = "none";

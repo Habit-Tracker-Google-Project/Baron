@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Habit Tracker</title>
+    <style>
+      .StatBox {
+
+      }
+
+      .StatBox p{
+
+      }
+
+      .chartBoxBar {
+        position: absolute;
+        left: 20%;
+        width: 27%;
+        bottom: 7%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+      }
+
+      .chartBoxPolar {
+        position: absolute;
+        right: 20%;
+        bottom: 7%;
+        width: 25%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+      }
+
+      .chartBoxLine {
+        position: absolute;
+        right: 20%;
+        top: 5.3%;
+        width: 25%;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+      }
+
+    </style>
+
+    <link rel="stylesheet" href="../setup.css">
+  </head>
+
+
+  <body>
+    <div id="StatBox">
+      <p></p>
+    </div>
+
+    <div class="chartBoxBar">
+      <canvas id="barChart"></canvas>
+    </div>
+
+    <div class="chartBoxPolar">
+      <canvas id="polarChart"></canvas>
+    </div>
+
+    <div class="chartBoxLine">
+      <canvas id="lineChart"></canvas>
+    </div>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+    <script type="text/javascript" src="Script.js"></script>
+    
+
+
+  <nav>
+  <ul>
+    <!-- Habit Tracker section -->
+    <li><a href="./HabitTracker.html">Habit Tracker</a></li>
+
+    <!-- Calendar section -->
+    <li><a href="../Calendar/Calendar.html">Calendar</a></li>
+
+    <!-- To-Do section -->
+    <li><a href="../To-Do/todo.html">To-Do</a></li>
+
+    <!-- Time Split section -->
+    <li><a href="../TimeSplits/timeSplits.html">Time Split</a></li>
+  </ul>
+</nav>
+
+  <div id="scroll-container"> 
+      <div id="scroll-text">Scrolling Text</div>
+  </div>
+
+  <script src="../ScrollingTips.js"></script>
+  </body>
+</html>
