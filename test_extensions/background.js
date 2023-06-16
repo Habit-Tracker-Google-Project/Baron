@@ -18,6 +18,7 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
+    updateList(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
 
@@ -44,6 +45,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
+    updateList(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
 
@@ -105,9 +107,12 @@ function updateList(taburl, time){
   if (urls.indexOf(taburl) >= 0){
     const index = urls.indexOf(taburl);
     times[index] += time;
+    localStorage.setItem('times', times);
   } else {
     urls.push(taburl);
     time.push(time);
+    localStorage.setItem('urls', urls);
   }
+  localStorage.setItem('times', times);
   
 }
