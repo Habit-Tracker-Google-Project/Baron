@@ -1,15 +1,7 @@
 // Data pulling ----------------------------------------------------
 
-let urls = [];
-let times = [];
-
-Object.entries(localStorage).forEach(([key, item]) => {
-  if (key != "list"){ // get every key : value pair except for the to-do list
-    urls.push(key);
-    times.push(item);
-  }
-})
-
+let urls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
+let times = localStorage.getItem('times') ? JSON.parse(localStorage.getItem('times')) : [];
 
 console.log(urls);
 console.log(times);
@@ -18,10 +10,10 @@ console.log(times);
 
 // attributes and data of the bar chart 
 let data = {
-  labels: ['Youtube','github','Google Docs','etc'], // array of website names (this is placeholder array)
+  labels: urls, // array of website names (this is placeholder array)
   datasets: [{
     label: 'Most Time Spent on These Tabs (sec)', // title of the chart
-    data: [91294, 50000, 29294, 22222], // array of times (this is a placeholder array)
+    data: times, // array of times (this is a placeholder array)
     backgroundColor: [
       'rgba(54, 162, 235, 0.2)',
     ],

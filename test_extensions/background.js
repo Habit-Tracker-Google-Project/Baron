@@ -19,14 +19,7 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
-    console.log(currentWebsite);
-
-    if (tab.url === "https://habit-tracker-google-project.github.io/HabitTracker/HabitTracker.html"){
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content-script.js"]
-      })
-    } 
+    //console.log(currentWebsite);
 
   }
 
@@ -52,14 +45,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     currentWebsite = new URL (tab.url);
-    console.log(currentWebsite);
+    //console.log(currentWebsite);
 
-    if (tab.url === "https://habit-tracker-google-project.github.io/HabitTracker/HabitTracker.html"){
-      chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content-script.js"]
-      })
-    } 
   }   
 });
 
@@ -110,4 +97,17 @@ function resetStorage() {
   chrome.storage.session.clear().then((result) => {
       console.log(result);
   });
+}
+
+function updateList(taburl, time){
+  let urls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
+  let times = localStorage.getItem('times') ? JSON.parse(localStorage.getItem('times')) : [];
+  if (urls.indexOf(taburl) >= 0){
+    const index = urls.indexOf(taburl);
+    times[index] += time;
+  } else {
+    urls.push(taburl);
+    time.push(time);
+  }
+  
 }
