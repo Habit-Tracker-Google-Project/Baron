@@ -11,7 +11,7 @@ function randomizeTip() { // will cycle the tips messages
         text.innerHTML = quotes[Math.floor(Math.random() * quotes.length)];
         instanceCounter = 0;
       } else {
-        text.innerHTML = "⠀";
+        text.innerHTML = " ";
       } // clears text
       instanceCounter++;
     }, 20000) // increments counter every 10s

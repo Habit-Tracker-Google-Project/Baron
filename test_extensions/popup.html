@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="todo.css">
     <link rel="stylesheet" href="calendar.css">
-    <link rel="stylesheet" href="./HabitTracker.css">
+    <link rel="stylesheet" href="chart.css">
 </head>
 <body>
   <div id="buttons">
@@ -14,6 +14,10 @@
     <button id="statsbtn">Statistics</button>
   </div>
   
+  <div id="scroll-container"> 
+    <div id="scroll-text">Scrolling Text</div>
+  </div>
+
   <div class="todo">
     <h1>To-Do List</h1>
     <form id="add-item-form">
@@ -86,18 +90,12 @@
       <canvas id="lineChart"></canvas>
     </div>
   </div>
-  
-  <div id="scroll-container"> 
-    <div id="scroll-text">Scrolling Text</div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script type="text/javascript" src="HabitTracker.js"></script>
-
+  <script src="npm-chart.js"></script>
+  <script src="chart.js"></script>
   <script src="popup.js"></script>
   <script src="todo.js"></script>
   <script src="calendar.js"></script>
-
   <script src="ScrollingTips.js"></script>
 </body>
 </html>
