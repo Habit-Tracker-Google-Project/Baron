@@ -1,6 +1,13 @@
 let startTime = Date.now();
 let currentWebsite = new URL ("http://www.default.com");
 
+let urls = [];
+let times = [];
+
+getData();
+console.log(urls);
+console.log(times);
+
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
   const tab = await chrome.tabs.get(activeInfo.tabId);
@@ -18,7 +25,11 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
-    updateList(currentWebsite.hostname, elapsedTimeSeconds);
+    console.log(urls);
+    console.log(times);
+    updateData(currentWebsite.hostname, elapsedTimeSeconds);
+    storeArrays();
+    
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
 
@@ -45,7 +56,11 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
-    updateList(currentWebsite.hostname, elapsedTimeSeconds);
+    console.log(urls);
+    console.log(times);
+    updateData(currentWebsite.hostname, elapsedTimeSeconds);
+    storeArrays();
+
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
 
@@ -101,18 +116,46 @@ function resetStorage() {
   });
 }
 
-function updateList(taburl, time){
-  let urls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
-  let times = localStorage.getItem('times') ? JSON.parse(localStorage.getItem('times')) : [];
-  if (urls.indexOf(taburl) >= 0){
-    const index = urls.indexOf(taburl);
+function updateData(taburl, time){
+  if (indexOf(urls, taburl) >= 0){
+    const index = indexOf(urls, taburl);
     times[index] += time;
-    localStorage.setItem('times', times);
   } else {
-    urls.push(taburl);
-    time.push(time);
-    localStorage.setItem('urls', urls);
+    push(urls, taburl);
+    push(times, time);
   }
-  localStorage.setItem('times', times);
-  
+}
+
+function getData(){
+  chrome.storage.local.get(['urls']).then((result) => {
+    // If the entry doesn't exist in our lookup, create one and set it's count to 1
+    if (result !== undefined) {
+        urls = result;
+    }
+  });
+
+  chrome.storage.local.get(['times']).then((result) => {
+    // If the entry doesn't exist in our lookup, create one and set it's count to 1
+    if (result !== undefined) {
+        times = result;
+    }
+  });
+}
+
+function storeArrays(){
+  chrome.storage.local.set({ 'urls': urls });
+  chrome.storage.local.set({ 'times': times });
+}
+
+function indexOf(arr, target){
+  for (let i = 0; i < arr.length; i++){
+    if (target === arr[i]){
+      return i;
+    }
+  }
+  return -1;
+}
+
+function push(arr, element){
+  arr[arr.length] = element;
 }

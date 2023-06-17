@@ -47,10 +47,10 @@ const barChart = new Chart(
 
 // attributes and data of the pie chart
 data = {
-  labels: ['Work','Other'],
+  labels: urls,
   datasets: [{
     label: 'Chrome Activity',
-    data: [0.4, 0.6],
+    data: times,
     backgroundColor: [
       'rgba(255, 26, 104, 0.2)',
       'rgba(54, 162, 235, 0.2)',
