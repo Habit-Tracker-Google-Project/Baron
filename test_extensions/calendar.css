@@ -9,6 +9,18 @@
 #header button {
   background-color:#92a1d1;
 }
+
+#nextButton {
+  left: 700px;
+}
+
+#backButton {
+  left: 60px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
 #container {
   width: 770px;
 }

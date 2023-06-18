@@ -1,10 +1,33 @@
 // Data pulling ----------------------------------------------------
 
-let urls = localStorage.getItem('urls') ? JSON.parse(localStorage.getItem('urls')) : [];
-let times = localStorage.getItem('times') ? JSON.parse(localStorage.getItem('times')) : [];
+let urls = [];
+let times = [];
 
+function getData(){
+  chrome.storage.local.get(['urls']).then((result) => {
+    console.log(result);
+    if (result !== undefined) {
+        urls = result;
+    }
+  });
+
+  chrome.storage.local.get(['times']).then((result) => {
+    console.log(result);
+    if (result !== undefined) {
+        times = result;
+    }
+  });
+}
+
+console.log ("WHAT1");
+getData();
+console.log ("WHAT2");
+
+console.log("urls");
 console.log(urls);
+console.log("times");
 console.log(times);
+
 
 // 1st chart -------------------------------------------------------------------------
 
@@ -55,64 +78,18 @@ data = {
       'rgba(255, 26, 104, 0.2)',
       'rgba(54, 162, 235, 0.2)',
     ],
-    borderColor: [
-      'rgba(255, 26, 104, 1)',
-      'rgba(54, 162, 235, 1)',
-    ],
-    borderWidth: 1
+    hoverOffset: 4
   }]
 };
 
 // config 
 const config2 = {
   type: 'pie',
-  data,
-  options: {  
-  }
+  data: data,
 };
 
 // render init block
-const polarChart = new Chart(
-  document.getElementById('polarChart'),
+const pieChart = new Chart(
+  document.getElementById('pieChart'),
   config2
-);
-
-// 3nd chart -------------------------------------------------------------------------
-
-// attributes and data of the pie chart
-data = {
-  labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-  datasets: [{
-    label: 'Awesomeness',
-    data: [0.2, 0.6, 0.1, 0.1, 0.2, 0.6, 0.1, 0.1, 0.2, 0.6, 0.1, 0.1],
-    borderColor: [
-      'rgba(255, 26, 104, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(255, 26, 104, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-      'rgba(255, 26, 104, 1)',
-      'rgba(54, 162, 235, 1)',
-      'rgba(255, 206, 86, 1)',
-      'rgba(75, 192, 192, 1)',
-    ],
-    borderWidth: 1
-  }]
-};
-
-// config 
-const config3 = {
-  type: 'line',
-  data,
-  options: {  
-  }
-};
-
-// render init block
-const lineChart = new Chart(
-  document.getElementById('lineChart'),
-  config3
 );

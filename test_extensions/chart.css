@@ -1,33 +1,20 @@
-
-
 .chartBoxBar {
   position: absolute;
-  left: 10%;
-  width: 27%;
-  bottom: 0%;
-  padding: 20px;
+  width: 60%;
+  top: 35px;
+  left: 2.5%;
+  padding: 5px;
   border-radius: 20px;
   border: solid 3px rgba(54, 162, 235, 1);
   background: white;
 }
 
-.chartBoxPolar {
+.chartBoxPie {
   position: absolute;
-  right: 20%;
-  bottom: 0%;
-  width: 25%;
-  padding: 20px;
-  border-radius: 20px;
-  border: solid 3px rgba(54, 162, 235, 1);
-  background: white;
-}
-
-.chartBoxLine {
-  position: absolute;
-  right: 20%;
-  top: 5.3%;
-  width: 25%;
-  padding: 20px;
+  left: 65%;
+  width: 30%;
+  top: 35px;
+  padding: 5px;
   border-radius: 20px;
   border: solid 3px rgba(54, 162, 235, 1);
   background: white;
