@@ -130,14 +130,14 @@ function getData(){
   chrome.storage.local.get('urls').then((result) => {
     console.log(result);
     if (result !== undefined) {
-        urls = Object.values(result);
+        urls = Object.values(result.urls);
     }
   });
 
   chrome.storage.local.get('times').then((result) => {
     console.log(result);
     if (result !== undefined) {
-        times = Object.values(result);
+        times = Object.values(result.times);
     }
   });
 }
