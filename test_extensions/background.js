@@ -5,7 +5,6 @@ let urls = [];
 let times = [];
 
 getData();
-resetStorage();
 
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
@@ -110,10 +109,10 @@ function storeInDisk(taburl, time) {
 
 function resetStorage() {
   chrome.storage.local.clear().then((result) => {
-      console.log(result + " NICE");
+      console.log(result);
   });
   chrome.storage.session.clear().then((result) => {
-      console.log(result + " NICE2");
+      console.log(result);
   });
 }
 
@@ -131,14 +130,14 @@ function getData(){
   chrome.storage.local.get('urls').then((result) => {
     console.log(result);
     if (result !== undefined) {
-        urls = result;
+        urls = Object.values(result);
     }
   });
 
   chrome.storage.local.get('times').then((result) => {
     console.log(result);
     if (result !== undefined) {
-        times = result;
+        times = Object.values(result);
     }
   });
 }
