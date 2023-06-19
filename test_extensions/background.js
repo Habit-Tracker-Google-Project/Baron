@@ -5,6 +5,7 @@ let urls = [];
 let times = [];
 
 getData();
+resetStorage();
 
 chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
@@ -25,6 +26,9 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     updateData(currentWebsite.hostname, elapsedTimeSeconds);
     storeArrays();
+
+    console.log(urls);
+    console.log(times);
     
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
@@ -54,6 +58,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
     storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     updateData(currentWebsite.hostname, elapsedTimeSeconds);
     storeArrays();
+
+    console.log(urls);
+    console.log(times);
 
     currentWebsite = new URL (tab.url);
     //console.log(currentWebsite);
@@ -103,10 +110,10 @@ function storeInDisk(taburl, time) {
 
 function resetStorage() {
   chrome.storage.local.clear().then((result) => {
-      console.log(result);
+      console.log(result + " NICE");
   });
   chrome.storage.session.clear().then((result) => {
-      console.log(result);
+      console.log(result + " NICE2");
   });
 }
 
@@ -121,13 +128,15 @@ function updateData(taburl, time){
 }
 
 function getData(){
-  chrome.storage.local.get(['urls']).then((result) => {
+  chrome.storage.local.get('urls').then((result) => {
+    console.log(result);
     if (result !== undefined) {
         urls = result;
     }
   });
 
-  chrome.storage.local.get(['times']).then((result) => {
+  chrome.storage.local.get('times').then((result) => {
+    console.log(result);
     if (result !== undefined) {
         times = result;
     }
@@ -150,6 +159,7 @@ function indexOf(arr, target){
 
 function push(arr, element){
   const length = Object.keys(arr).length;
+  console.log(length);
   arr[length] = element;
 }
 

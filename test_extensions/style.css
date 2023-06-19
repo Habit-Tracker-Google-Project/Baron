@@ -31,22 +31,22 @@ body {
     border-radius: 5px;
   }
   
-  #buttons {
-    margin: 20px;
-    text-align: center;
-  }
-  
-  #buttons button {
-    margin: 10px;
+  #todolist, #timetracker, #calendarbtn, #statsbtn {
     padding: 10px 20px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 20px;
+    text-align: center;
+  }
+
+  #todolist{
+    margin-left: 15%;
   }
   
-  #buttons button:hover {
+  #todolist:hover, #timetracker:hover, #calendarbtn:hover, #statsbtn:hover {
     background-color: #3e8e41;
   }
   
@@ -61,7 +61,6 @@ body {
     border-bottom-width: 4px;
     border-left-width: 0px;
     border-right-width: 0px;
-    
     border-color: rgb(47, 172, 255);
     background-color:lightskyblue;
     top: 100px;
@@ -74,7 +73,7 @@ body {
   
   #scroll-text {
     /* animation properties */
-    font-size: 22px;
+    font-size: 19px;
     animation: my-animation 20s linear infinite;
     color: solid black;
   }

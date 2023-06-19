@@ -11,14 +11,20 @@
 }
 
 #nextButton {
-  left: 700px;
+  position: relative;
+  right: 15px;
 }
 
 #backButton {
-  left: 60px;
+  position: relative;
   padding: 10px;
   border: none;
   border-radius: 5px;
+  right: 10px;
+}
+
+#nextButton:hover, #backButton:hover {
+  background-color: #6573a1;
 }
 
 #container {

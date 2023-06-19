@@ -13,18 +13,19 @@ function randomizeTip() { // will cycle the tips messages
       "Make sure you are cleaning you keyboard, mouse, and phone regularly, they get very dirty!",
       "Excercising can boost your energy, try to move around during breaks!",
       "Planning out your work ahead of time can take a lot of stress off your shoulders!",
-      "Socializing can free your mind, but don't forget about your responsibilities!",
-      "Ask a someone for help if you need some!",
+      "Socializing can free your mind from the pressure!",
+      "Ask someone for help if you need some!",
       "Getting sufficient sleep can increase focus, make you feel less sluggish, and improve thinking!",
-      "Napping is can provide a large boost in energy, so if you didn't get enough sleep, it can be a great alternative!",
+      "Napping can provide a large enery boost!",
       "Having something to look forward to can motivate you to finish your task!",
-      "Creating your own work plan that accounts for your work tendencies can improve efficiency and quality!",
+      "Creating your own work plan that accounts for work tendencies can improve efficiency and quality!",
       "When you can't focus on a task anymore, take a short break and come back later, maybe work on a different task!",
       "Stopping procrastination is very hard to start, but very easy to do! Just make it easier to start!",
-      "Don't try to multitask, it usually results in less efficiency and focus. Instead, try working on each task individually!",
-      "Keep your phone out of sight and out of reach! It will give no chance for you to reach for it!",
-      "Manage your mail well so that you aren't spending hours going through it! filtering your mail and designating times to check it will reduce time spent!",
-      "Listening to music can make the task more enjoyable, but not easier! Make sure you don't listen to anything distracting!",
+      "Don't try to multitask, it usually results in less efficiency and focus.",
+      "Keep your phone out of sight and out of reach!",
+      "Manage your email so that you aren't wasting hours going through it!",
+      "Listening to music can make the task more enjoyable!",
+
       "It takes around 2 months to make a habit and up to 2 months to break one, keep up the commitment!",
       "The best time to plant a tree was 20 years ago. The second best time is now.",
       "Learn as if you will live forever, live like you will die tomorrow.",
@@ -36,11 +37,9 @@ function randomizeTip() { // will cycle the tips messages
       "All warfare is based on deception.",
       "Opportunities multiply as they are seized.",
       "You can handle anything for 10 seconds.",
-      "It gets easier. Every day it gets a little easier. But you gotta do it every day - that's the hard part. But it does get easier.",
-      "Sucking at something is the first step at being sorta good at something.",
-      "Not everything is a lesson. Sometimes, you just fail.",
-      "It is important to draw wisdom from different places. If you take it from only one place, it becomes rigid and stale.",
-      "If used consistently, habit trackers have been proven to be effective at building and breaking habits."
+      "It gets easier. Every day it gets a little easier. But you gotta do it every day - that's the hard part.",
+      "Being bad is the first step at improving.",
+      "It is important to draw wisdom from different places. If you take it from only one place, it becomes rigid and stale."
     ] // we can add more tips later
     var text = document.getElementById("scroll-text");
     let instanceCounter = 0;

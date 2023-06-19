@@ -1,34 +1,34 @@
+
+let urls = url();
+let times = time();
+
+load();
+
 // Data pulling ----------------------------------------------------
 
-let urls = [];
-let times = [];
-
-function getData(){
+function url (){
   chrome.storage.local.get(['urls']).then((result) => {
-    console.log(result);
     if (result !== undefined) {
-        urls = result;
-    }
-  });
-
-  chrome.storage.local.get(['times']).then((result) => {
-    console.log(result);
-    if (result !== undefined) {
-        times = result;
+        console.log("Url WORKS");
+        return (Array)(result);
+    }else{
+      return new Array (0);
     }
   });
 }
 
-console.log ("WHAT1");
-getData();
-console.log ("WHAT2");
+function time (){
+  chrome.storage.local.get(['times']).then((result) => {
+    if (result !== undefined) {
+        console.log("Time WORKS");
+        return (Array)(result);
+    }else{
+      return new Array (0);
+    }
+  });
+}
 
-console.log("urls");
-console.log(urls);
-console.log("times");
-console.log(times);
-
-
+function load(){
 // 1st chart -------------------------------------------------------------------------
 
 // attributes and data of the bar chart 
@@ -72,11 +72,10 @@ const barChart = new Chart(
 data = {
   labels: urls,
   datasets: [{
-    label: 'Chrome Activity',
+    label: 'seconds',
     data: times,
     backgroundColor: [
       'rgba(255, 26, 104, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
     ],
     hoverOffset: 4
   }]
@@ -93,3 +92,8 @@ const pieChart = new Chart(
   document.getElementById('pieChart'),
   config2
 );
+
+console.log(urls);
+console.log(times);
+
+}
