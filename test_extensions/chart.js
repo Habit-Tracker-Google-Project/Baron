@@ -33,7 +33,7 @@ async function load(){
   let data = {
     labels: (await url()), // array of website names (this is placeholder array)
     datasets: [{
-      label: 'Most Time Spent on These Tabs (sec)', // title of the chart
+      label: ' Seconds', // title of the chart
       data: (await time()), // array of times (this is a placeholder array)
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
@@ -70,7 +70,7 @@ async function load(){
   data = {
     labels: (await url()),
     datasets: [{
-      label: 'seconds',
+      label: ' Seconds',
       data: (await time()),
       backgroundColor: [
         'rgba(255, 26, 104, 0.2)',
@@ -93,10 +93,4 @@ async function load(){
 
 }
 
-async function main (){
-  console.log (await url());
-  console.log (await time());
-  load();
-}
-
-main();
+load();
