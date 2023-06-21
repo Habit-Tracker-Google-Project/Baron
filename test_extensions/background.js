@@ -21,8 +21,8 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
 
     // Storage ----------
 
-    await storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
-    await storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
+    storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     updateData(currentWebsite.hostname, elapsedTimeSeconds);
     storeArrays();
 
@@ -37,7 +37,7 @@ chrome.tabs.onActivated.addListener(async function(activeInfo) {
 });
 
 
-chrome.tabs.onUpdated.addListener(async function(tabId, changeInfo, tab) {
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
   // you can ignore TabID here
   // console.log(changeInfo);
   // console.log(tab);
@@ -53,8 +53,8 @@ chrome.tabs.onUpdated.addListener(async function(tabId, changeInfo, tab) {
 
     // Storage ----------
 
-    await storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
-    await storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
+    storeCountInSession(currentWebsite.hostname, elapsedTimeSeconds); // stores the info assigned as (hostname : time)
+    storeInDisk(currentWebsite.hostname, elapsedTimeSeconds);
     updateData(currentWebsite.hostname, elapsedTimeSeconds);
     storeArrays();
 
