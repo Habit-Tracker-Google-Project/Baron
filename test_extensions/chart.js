@@ -25,16 +25,67 @@ async function time() {
   });
 }
 
+function bubblesort (arr1, arr2){
+  if (arr2.length <= 1){
+    return;
+  }
+  let loop = true;
+  while (loop){
+    let prev2 = arr2[0];
+    let prev1 = arr1[0];
+    loop = false;
+    for (let i = 1; i < arr2.length; i++){
+      if (arr2[i] > prev2){
+
+        arr2[i - 1] = arr2[i];
+        arr2[i] = prev2;
+
+        arr1[i - 1] = arr1[i];
+        arr1[i] = prev1;
+
+        loop = true;
+      }else{
+        prev2 = arr2[i];
+        prev1 = arr1[i];
+      }
+    }
+  }
+}
+
+// prerequisite: array is sorted using bubble sort
+function organize (arr1, arr2){
+
+  if (arr2.length <= 30){
+    return;
+  }
+
+  let total = 0;
+  for (let i = arr2.length - 1; i > 30; i--){
+    total += arr2.pop();
+    arr1.pop();
+  }
+
+  arr2[30] = total;
+  arr1[30] = "other";
+  
+}
+
 
 async function load(){
   // 1st chart -------------------------------------------------------------------------
 
+  let urls = await url();
+  let times = await time();
+
+  bubblesort(urls, times);
+  organize(urls, times);
+
   // attributes and data of the bar chart 
   let data = {
-    labels: (await url()), // array of website names (this is placeholder array)
+    labels: (urls), // array of website names (this is placeholder array)
     datasets: [{
       label: ' Seconds', // title of the chart
-      data: (await time()), // array of times (this is a placeholder array)
+      data: (times), // array of times (this is a placeholder array)
       backgroundColor: [
         'rgba(54, 162, 235, 0.2)',
       ],
@@ -68,10 +119,10 @@ async function load(){
 
   // attributes and data of the pie chart
   data = {
-    labels: (await url()),
+    labels: (urls),
     datasets: [{
       label: ' Seconds',
-      data: (await time()),
+      data: (times),
       backgroundColor: [
         'rgba(255, 26, 104, 0.2)',
       ],

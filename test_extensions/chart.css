@@ -1,7 +1,8 @@
+
 .chartBoxBar {
   position: absolute;
-  width: 60%;
-  top: 35px;
+  width: 93%;
+  top: 20px;
   left: 2.5%;
   padding: 5px;
   border-radius: 20px;
@@ -11,9 +12,9 @@
 
 .chartBoxPie {
   position: absolute;
-  left: 65%;
-  width: 30%;
-  top: 35px;
+  left: 2.5%;
+  width: 93%;
+  top: 410px;
   padding: 5px;
   border-radius: 20px;
   border: solid 3px rgba(54, 162, 235, 1);
