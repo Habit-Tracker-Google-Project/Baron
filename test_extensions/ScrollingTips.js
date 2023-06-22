@@ -1,7 +1,7 @@
 function randomizeTip() { // will cycle the tips messages
     const tips = [
       "Stay Hydrated! Keep a good supply of water near you!",
-      "Make sure to eat healthy and ",
+      "Make sure to eat healthy",
       "Try to reduce caffeine consumption, it will help in the long term!",
       "Good posture can help reduce tension on your shoulders and spine!",
       "Water rich fruits can act as a healthy dose of sugar and water!",
@@ -41,12 +41,12 @@ function randomizeTip() { // will cycle the tips messages
       "It is important to draw wisdom from different places. If you take it from only one place, it becomes rigid and stale."
     ] // we can add more tips later
     var text = document.getElementById("scroll-text");
-    let instanceCounter = 0;
+    let instanceCounter = 2;
     var timer = setInterval(function() {
-      if (instanceCounter==2) {
+      if (instanceCounter>=2) {
         // every 100s, text will appear and scroll for 20s
         text.innerHTML = tips[Math.floor(Math.random() * tips.length)];
-        instanceCounter = 0;
+        instanceCounter = 1;
       } else {
         text.innerHTML = " ";
       } // clears text
